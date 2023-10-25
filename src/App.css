@@ -1,0 +1,10 @@
+.dates-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide en dos columnas de igual ancho */
+  gap: 20px; /* Espacio entre las dos columnas */
+}
+
+.column {
+  border: 1px solid #ccc; /* Agrega un borde a cada columna para separarlas visualmente */
+  padding: 10px;
+}
