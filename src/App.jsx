@@ -8,6 +8,14 @@ function App() {
   const [events2, setEvents2] = useState([]);
   const [firstTimezone, setFirstTimezone] = useState('America/Lima');
   const [secondTimezone, setSecondTimezone] = useState('America/Santiago');
+
+
+  const today = moment();
+  const mondayDayNumber = today.clone().startOf('week').add(1, 'day').date();
+  const sundayDayNumber = today.clone().endOf('week').add(1, 'day').date();
+
+
+
   const options = [
     {value: 'Europe/London', label: 'Europe/London'},
     {value: 'Europe/Paris', label: 'Europe/Paris'},
@@ -44,9 +52,19 @@ function App() {
   const handleSelectChange2 = (value) => {
     setSecondTimezone(value);
   }
+
   function convertTimezone(fecha, tzOrigen, tzDestino) {
-    const fechaOrigen = moment.tz(fecha, tzOrigen);
-    return fechaOrigen.tz(tzDestino);
+
+    const originDate = moment.tz(fecha, tzOrigen);
+    const destinationDate = originDate.tz(tzDestino);
+
+    const destinationDayNumber = parseInt(destinationDate.format('DD'));
+
+    if (destinationDayNumber > sundayDayNumber) destinationDate.date(mondayDayNumber)
+
+    if (destinationDayNumber < mondayDayNumber) destinationDate.date(sundayDayNumber)
+
+    return destinationDate;
   }
 
   return (
