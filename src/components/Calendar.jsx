@@ -42,7 +42,7 @@ const Calendar = ({events, setEvents, timezone}) => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold text-center py-2">{timezone}</h2>
+      <h2 className="text-md font-bold text-center py-2 md:text-lg lg:text-xl">{timezone}</h2>
       <FullCalendar
         plugins={[timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
