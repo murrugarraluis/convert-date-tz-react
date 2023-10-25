@@ -8,7 +8,7 @@ const Select = ({ options, value, onChange }) => {
   };
 
   return (
-    <select value={value} onChange={handleChange}>
+    <select className="select select-bordered w-full" value={value} onChange={handleChange}>
       {/* eslint-disable-next-line react/prop-types */}
       {options.map((option, index) => (
         <option key={index} value={option.value}>

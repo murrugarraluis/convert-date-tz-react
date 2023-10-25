@@ -42,7 +42,7 @@ const Calendar = ({events, setEvents, timezone}) => {
 
   return (
     <div>
-      <h2>{timezone}</h2>
+      <h2 className="text-xl font-bold text-center py-2">{timezone}</h2>
       <FullCalendar
         plugins={[timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
@@ -59,7 +59,7 @@ const Calendar = ({events, setEvents, timezone}) => {
         }}
         allDaySlot={false}
         dayHeaderFormat={{weekday: 'short'}}
-        editable={true}
+        // editable={true}
         eventDurationEditable={true}
         selectable={true}
         select={handleDateSelect}

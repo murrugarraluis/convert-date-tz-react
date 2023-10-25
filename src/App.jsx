@@ -2,7 +2,6 @@ import Calendar from "./components/Calendar.jsx";
 import Select from "./components/Select.jsx";
 import moment from 'moment-timezone';
 import {useState} from 'react'
-import './App.css'
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -52,19 +51,23 @@ function App() {
 
   return (
     <>
-      <div className="dates-container">
-        <Select options={options} value={firstTimezone} onChange={handleSelectChange}/>
-        <Select options={options} value={secondTimezone} onChange={handleSelectChange2}/>
+      <h1 className="text-xl font-bold text-center pt-8 md:text-2xl lg:text-3xl">
+        Conversor de Horario Multi-TimeZone
+      </h1>
+      <div className="p-8">
+        <div className="grid grid-cols-1 gap-4 py-4 md:grid-cols-2">
+          <Select options={options} value={firstTimezone} onChange={handleSelectChange}/>
+          <Select options={options} value={secondTimezone} onChange={handleSelectChange2}/>
+        </div>
+        <div className="flex items-center justify-center gap-4 py-4">
+          <button className="btn btn-accent" onClick={convertWeekTimezone}>Convertir</button>
+          <button className="btn btn-ghost" onClick={clearEvents}>Limpiar</button>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Calendar className="column" events={events} setEvents={setEvents} timezone={firstTimezone}></Calendar>
+          <Calendar className="column" events={events2} setEvents={setEvents2} timezone={secondTimezone}></Calendar>
+        </div>
       </div>
-      <div className="dates-container">
-        <Calendar className="column" events={events} setEvents={setEvents} timezone={firstTimezone}></Calendar>
-        <Calendar className="column" events={events2} setEvents={setEvents2} timezone={secondTimezone}></Calendar>
-      </div>
-      <div>
-        <button onClick={convertWeekTimezone}>Convert</button>
-        <button onClick={clearEvents}>Clear</button>
-      </div>
-      <br/>
     </>
   )
 }
